@@ -1,4 +1,4 @@
-package io.egen.Entity;
+package io.egen.entity;
 
 import javax.persistence.Entity;
 import java.sql.Timestamp;
