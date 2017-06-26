@@ -1,0 +1,6 @@
+.idea
+*.class
+build
+target
+.settings
+.metadata
