@@ -38,8 +38,8 @@ public class VehicleController {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.TEXT_HTML_VALUE)
     public String update(@RequestBody List<Vehicle> vehvin) {
-        for(Vehicle vin: vehvin)
-            service.update(vin);
+        for(Vehicle veh: vehvin)
+            service.update(veh);
         return " ";
     }
 
