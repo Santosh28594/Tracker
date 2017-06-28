@@ -1,11 +1,19 @@
 package io.egen.entity;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Vehicle.findAll", query = "Select veh from Vehicle veh Order by veh.model desc"),
+        @NamedQuery(name = "Vehicle.findByModel", query = "Select veh from Vehicle veh where veh.model=:paramModel ")
+})
 public class Vehicle {
-
+    @Id
     private String vin;
 
     private String make;

@@ -1,12 +1,11 @@
 package io.egen;
 
 
-
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{Application.class};
+        return new Class[]{Application.class, JPAConfig.class};
     }
 
     protected Class<?>[] getServletConfigClasses() {
@@ -14,6 +13,6 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
     }
 
     protected String[] getServletMappings() {
-        return new String[]{"/vehicles/*","/readings/*"};
+        return new String[]{"/api/*"};
     }
 }
