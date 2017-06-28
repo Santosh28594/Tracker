@@ -39,6 +39,7 @@ public class VehicleServiceImpl implements VehicleService{
     }
     @Transactional
     public Vehicle update(Vehicle vehicle) {
+
         Vehicle existing = repository.findOne(vehicle.getVin());
         if (existing == null) {
             System.out.println(vehicle.getVin()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");

@@ -20,7 +20,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     }
 
     public Vehicle findOne(String vin) {
-        return null;
+        return entityManager.find(Vehicle.class,vin);
     }
 
     public Vehicle findByModel(String model) {

@@ -5,6 +5,7 @@ import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.sql.Timestamp;
 
 @Entity
@@ -22,6 +23,8 @@ public class Vehicle {
     private int redlineRpm;
     private int maxFuelVolume;
     private Timestamp lastServiceDate;
+    @ManyToOne
+    private Reading reading;
 
     public String getVin() {
         return vin;
@@ -79,5 +82,11 @@ public class Vehicle {
         this.lastServiceDate = lastServiceDate;
     }
 
+    public Reading getReading() {
+        return reading;
+    }
 
+    public void setReading(Reading reading) {
+        this.reading = reading;
+    }
 }
