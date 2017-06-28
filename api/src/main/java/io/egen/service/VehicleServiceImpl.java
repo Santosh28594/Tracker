@@ -24,9 +24,9 @@ public class VehicleServiceImpl implements VehicleService{
     @Transactional(readOnly = true)
     public Vehicle findOne(String vin) {
        Vehicle existing = repository.findOne(vin);
-        /*if (existing == null) {
+        if (existing == null) {
             throw new ResourceNotFoundException("Vehicle with vin " + vin + " doesn't exist.");
-        }*/
+        }
         return existing;
     }
     @Transactional

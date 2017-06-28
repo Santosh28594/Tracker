@@ -3,10 +3,9 @@ package io.egen.entity;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @NamedQueries({
@@ -23,8 +22,8 @@ public class Vehicle {
     private int redlineRpm;
     private int maxFuelVolume;
     private Timestamp lastServiceDate;
-    @ManyToOne
-    private Reading reading;
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Reading> reading;
 
     public String getVin() {
         return vin;
@@ -82,11 +81,11 @@ public class Vehicle {
         this.lastServiceDate = lastServiceDate;
     }
 
-    public Reading getReading() {
+    public List<Reading> getReading() {
         return reading;
     }
 
-    public void setReading(Reading reading) {
+    public void setReading(List<Reading> reading) {
         this.reading = reading;
     }
 }
