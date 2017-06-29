@@ -31,7 +31,6 @@ public class ReadingController {
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.TEXT_HTML_VALUE)
     public String create( @RequestBody Reading read) {
-
         readingService.create(read);
         return "";
     }

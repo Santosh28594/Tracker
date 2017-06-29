@@ -5,9 +5,9 @@ import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
 
 @Entity
+@Table(name ="Vehicle")
 @NamedQueries({
         @NamedQuery(name = "Vehicle.findAll", query = "Select veh from Vehicle veh Order by veh.model desc"),
         @NamedQuery(name = "Vehicle.findByModel", query = "Select veh from Vehicle veh where veh.model=:paramModel ")
@@ -23,8 +23,7 @@ public class Vehicle {
     private int maxFuelVolume;
     private Timestamp lastServiceDate;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Reading> reading;
+
 
     public String getVin() {
         return vin;
@@ -82,11 +81,16 @@ public class Vehicle {
         this.lastServiceDate = lastServiceDate;
     }
 
-    public List<Reading> getReading() {
-        return reading;
-    }
-
-    public void setReading(List<Reading> reading) {
-        this.reading = reading;
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "vin='" + vin + '\'' +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", redlineRpm=" + redlineRpm +
+                ", maxFuelVolume=" + maxFuelVolume +
+                ", lastServiceDate=" + lastServiceDate +
+                '}';
     }
 }

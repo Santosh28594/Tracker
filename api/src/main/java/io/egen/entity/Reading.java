@@ -3,19 +3,27 @@ package io.egen.entity;
 
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
-
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Reading.findAll", query = "Select read from Reading read Order by read.vin desc")})
+        @NamedQuery(name = "Reading.findAll", query = "Select read from Reading read")})
 public class Reading {
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
+    private Integer readid;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "vin", nullable = false)
+    private Vehicle ve;
+
+    @Transient
     private String vin;
+
+
     private double latitude;
     private double longitude;
     private Timestamp timestamp;
@@ -28,6 +36,24 @@ public class Reading {
     private int engineRpm;
     @Embedded
     private Tires tires;
+
+
+
+    public Integer getReadid() {
+        return readid;
+    }
+
+    public void setReadid(Integer readid) {
+        this.readid = readid;
+    }
+
+    public Vehicle getVe() {
+        return ve;
+    }
+
+    public void setVe(Vehicle ve) {
+        this.ve = ve;
+    }
 
     public String getVin() {
         return vin;
@@ -123,5 +149,25 @@ public class Reading {
 
     public void setTires(Tires tires) {
         this.tires = tires;
+    }
+
+    @Override
+    public String toString() {
+        return "Reading{" +
+                "vin='" + vin + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", timestamp=" + timestamp +
+                ", fuelVolume=" + fuelVolume +
+                ", speed=" + speed +
+                ", engineHp=" + engineHp +
+                ", checkEngineLightOn=" + checkEngineLightOn +
+                ", engineCoolantLow=" + engineCoolantLow +
+                ", cruiseControlOn=" + cruiseControlOn +
+                ", engineRpm=" + engineRpm +
+                ", tires=" + tires +
+                ", readid=" + readid +
+
+                '}';
     }
 }
