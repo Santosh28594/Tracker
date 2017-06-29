@@ -17,7 +17,7 @@ public class Reading {
     @Id
     private String vin;
     private double latitude;
-    private  double longitude;
+    private double longitude;
     private Timestamp timestamp;
     private double fuelVolume;
     private int speed;

@@ -22,6 +22,7 @@ public class Vehicle {
     private int redlineRpm;
     private int maxFuelVolume;
     private Timestamp lastServiceDate;
+
     @OneToMany(fetch = FetchType.LAZY)
     private List<Reading> reading;
 
