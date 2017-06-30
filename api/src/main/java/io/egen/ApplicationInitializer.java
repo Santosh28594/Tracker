@@ -3,6 +3,8 @@ package io.egen;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+
+/*Initializing Application*/
 public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{Application.class, JPAConfig.class};

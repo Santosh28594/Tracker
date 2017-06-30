@@ -13,6 +13,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+
+/*Configuration for Data Base & Hibernate*/
 @Configuration
 @EnableTransactionManagement
 public class JPAConfig {
@@ -32,7 +34,7 @@ public class JPAConfig {
         emf.setJpaProperties(properties);
         return emf;
     }
-
+    /*Connection with Data base using J connector*/
     @Bean
     public DataSource getDataSource(){
         DriverManagerDataSource ds = new DriverManagerDataSource();

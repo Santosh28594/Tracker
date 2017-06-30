@@ -6,14 +6,21 @@ import org.hibernate.annotations.NamedQuery;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+
+
+/*Vehicles Entity*/
 @Entity
 @Table(name ="Vehicle")
 @NamedQueries({
+        /*Queries to Search in a entity*/
         @NamedQuery(name = "Vehicle.findAll", query = "Select veh from Vehicle veh Order by veh.model desc"),
         @NamedQuery(name = "Vehicle.findByModel", query = "Select veh from Vehicle veh where veh.model=:paramModel ")
 })
 public class Vehicle {
-    @Id
+
+    /*Declaring variables*/
+
+    @Id/*Primary Key*/
     private String vin;
 
     private String make;
@@ -24,7 +31,7 @@ public class Vehicle {
     private Timestamp lastServiceDate;
 
 
-
+    /*Setters and Getters of Variables*/
     public String getVin() {
         return vin;
     }
@@ -81,6 +88,7 @@ public class Vehicle {
         this.lastServiceDate = lastServiceDate;
     }
 
+    /*toString() method for testing*/
     @Override
     public String toString() {
         return "Vehicle{" +

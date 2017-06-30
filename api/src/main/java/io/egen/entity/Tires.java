@@ -2,7 +2,7 @@ package io.egen.entity;
 
 import javax.persistence.Embeddable;
 
-@Embeddable
+@Embeddable/*Type of Entity inside Reading*/
 public class Tires {
 
     private int frontLeft;

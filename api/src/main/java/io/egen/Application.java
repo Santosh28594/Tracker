@@ -11,8 +11,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableWebMvc
 public class Application extends WebMvcConfigurerAdapter {
 
-
+/*Configuration Class*/
     @Override
+
+    /*Cross Origin Implementation*/
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/*").allowedOrigins("*").allowedMethods("*").allowedHeaders("header1", "header2", "header3")
                 .exposedHeaders("header1", "header2")

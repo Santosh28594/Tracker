@@ -7,20 +7,23 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+
+/*Readings Entity*/
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Reading.findAll", query = "Select read from Reading read")})
 public class Reading {
 
-    @Id
+    @Id/*Auto Generated Primary key*/
     @GeneratedValue(strategy = IDENTITY)
     private Integer readid;
 
+    /*Many to One mapping b/w Reading to Vehicles*/
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vin", nullable = false)
+    @JoinColumn(name = "vin", nullable = false)/*Foreign Key*/
     private Vehicle ve;
 
-    @Transient
+    @Transient/*To be invisible in Reading Entity*/
     private String vin;
 
 
@@ -34,11 +37,11 @@ public class Reading {
     private boolean engineCoolantLow;
     private boolean cruiseControlOn;
     private int engineRpm;
-    @Embedded
+    @Embedded/*Part of Reading Entity but a different object*/
     private Tires tires;
 
 
-
+    /*Getters and setters of reading entity variables*/
     public Integer getReadid() {
         return readid;
     }
@@ -151,6 +154,7 @@ public class Reading {
         this.tires = tires;
     }
 
+    /*toString() for testing*/
     @Override
     public String toString() {
         return "Reading{" +

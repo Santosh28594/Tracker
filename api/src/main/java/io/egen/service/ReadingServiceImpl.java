@@ -22,6 +22,9 @@ public class ReadingServiceImpl implements ReadingService{
     @Autowired
     VehicleRepository repository;
 
+    @Autowired
+    AlertsService alertsService;
+
     @Transactional(readOnly = true)
     public List<Reading> findAll() {
         return readingRepository.findAll();
@@ -45,6 +48,7 @@ public class ReadingServiceImpl implements ReadingService{
         reading.setVe(vehi);
 
        readingRepository.create(reading);
+       alertsService.checkinAlerts(reading);
        return reading;
 
     }
