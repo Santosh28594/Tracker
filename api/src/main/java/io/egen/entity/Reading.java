@@ -1,8 +1,11 @@
 package io.egen.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
+import org.hibernate.annotations.Proxy;
+
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -21,6 +24,7 @@ public class Reading {
     /*Many to One mapping b/w Reading to Vehicles*/
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vin", nullable = false)/*Foreign Key*/
+    @JsonIgnore
     private Vehicle ve;
 
     @Transient/*To be invisible in Reading Entity*/

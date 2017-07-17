@@ -1,5 +1,8 @@
 package io.egen.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -19,6 +22,7 @@ public class Alert {
 
     @ManyToOne(fetch = FetchType.LAZY)/*Many to one mapping b/w Alerts to Readings*/
     @JoinColumn(name = "readid", nullable = false)
+    @JsonIgnore
     private Reading reading;
 
 
