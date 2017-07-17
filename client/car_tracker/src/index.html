@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="tracker">
+<head>
+    <meta charset="UTF-8">
+    <title>car_tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+Car-Tracker project
+<div ng-controller="trackerController as trackVm">
+<h1>{{trackVm.title}}</h1>
+  <p ng-repeat="vehicle in trackVm.vehicles">{{vehicle.vin}} {{vehicle.make}}</p>
+</div>
+<script src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
+<script src="tracker.controller.js"></script>
+<script src="tracker.service.js"></script>
+</body>
+</html>
