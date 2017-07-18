@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    angular.module('tracker')
+    var tracker = angular.module('tracker')
         .service('trackerService', trackerService);
 
     trackerService.$inject = ['$q', '$http'];
@@ -8,16 +8,14 @@
     function trackerService($q,$http){
         var self=this;
         self.get=getVehicles;
-        self.getById = getVehiclesById;
-
+        console.log("Came here");
         function getVehicles(){
             return $http.get('http://localhost:8080/api/vehicles')
                 .then(successFn, errorFn);
         }
 
         function successFn(response){
-            retrun
-            response.data;
+            return response.data;
         }
         function errorFn(error) {
             return $q.reject(error);
