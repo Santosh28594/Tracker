@@ -22,13 +22,18 @@ public class ReadingController {
         return readingService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{vin}",
+//    @RequestMapping(method = RequestMethod.GET, value = "/{vin}",
+//            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//    public Reading findOne(@PathVariable("vin") String readvin) {
+//        return readingService.findOne(readvin);
+//    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{VinId}",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Reading findOne(@PathVariable("vin") String readvin) {
-        return readingService.findOne(readvin);
+    public List<Reading> findByVinId(@PathVariable("VinId") String vehId) {
+        System.out.println("Displaying a single vehicle by its vin number");
+        return readingService.findByVinId(vehId);
     }
-
-
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.TEXT_HTML_VALUE)

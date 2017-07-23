@@ -10,7 +10,9 @@ public interface ReadingService {
 
     List<Reading> findAll();
 
-   Reading findOne(String vin);
+   //Reading findOne(String vin);
+
+    List<Reading> findByVinId(String VinId);
 
     Reading create(Reading reading);
 
