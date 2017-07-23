@@ -23,6 +23,19 @@ public class ReadingRepositoryImpl implements ReadingRepository {
     }
 
 
+    public List<Reading> findByVinId(String VinId) {
+        TypedQuery<Reading> query = entityManager.createNamedQuery("Reading.findByVinId", Reading.class);
+        query.setParameter("paramVinId", VinId);
+        List<Reading> resutList = query.getResultList();
+        if(resutList!= null){
+            return resutList;
+        }
+        else {
+            return null;
+        }
+    }
+
+
     public Reading findOne(String vin) {
         return entityManager.find(Reading.class,vin);
     }

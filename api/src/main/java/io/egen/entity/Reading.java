@@ -4,7 +4,6 @@ package io.egen.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
-import org.hibernate.annotations.Proxy;
 
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.*;
@@ -14,7 +13,9 @@ import java.sql.Timestamp;
 /*Readings Entity*/
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Reading.findAll", query = "Select read from Reading read")})
+        @NamedQuery(name = "Reading.findAll", query = "Select read from Reading read"),
+        @NamedQuery(name = "Reading.findByVinId",query = "select read from Reading read where read.VinId=:paramVinId")
+})
 public class Reading {
 
     @Id/*Auto Generated Primary key*/
@@ -27,9 +28,19 @@ public class Reading {
     @JsonIgnore
     private Vehicle ve;
 
-    @Transient/*To be invisible in Reading Entity*/
+    @Transient
     private String vin;
 
+
+    private String VinId;
+
+    public String getVinId() {
+        return VinId;
+    }
+
+    public void setVinId(String vinId) {
+        this.VinId = vinId;
+    }
 
     private double latitude;
     private double longitude;

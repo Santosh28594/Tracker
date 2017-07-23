@@ -25,17 +25,30 @@ public class ReadingServiceImpl implements ReadingService{
     @Autowired
     AlertsService alertsService;
 
+    @Autowired
+    GeoService geoService;
+
     @Transactional(readOnly = true)
     public List<Reading> findAll() {
-        return readingRepository.findAll();
-    }
-    @Transactional(readOnly = true)
-    public Reading findOne(String vin) {
-        Reading existing = readingRepository.findOne(vin);
-        if (existing == null) {
-            throw new ResourceNotFoundException("Readings with vin " + vin + " doesn't exist.");
+        List<Reading> existing = readingRepository.findAll();
+        for(Reading r : existing)
+        {
+            r.setVin(r.getVe().getVin());
         }
         return existing;
+    }
+//    @Transactional(readOnly = true)
+//    public Reading findOne(String vin) {
+////        Reading existing = readingRepository.findOne(vin);
+////        if (existing == null) {
+////            throw new ResourceNotFoundException("Readings with vin " + vin + " doesn't exist.");
+////        }
+////        return existing;
+//    }
+
+   @Transactional(readOnly = true)
+    public List<Reading> findByVinId(String VinId) {
+       return readingRepository.findByVinId(VinId);
     }
 
     @Transactional
@@ -46,7 +59,8 @@ public class ReadingServiceImpl implements ReadingService{
             throw new NullPointerException();
         }
         reading.setVe(vehi);
-
+        reading.setVinId(reading.getVe().getVin());
+        geoService.create(reading);
        readingRepository.create(reading);
        alertsService.checkinAlerts(reading);
        return reading;

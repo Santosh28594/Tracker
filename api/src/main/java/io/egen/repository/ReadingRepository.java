@@ -10,6 +10,8 @@ public interface ReadingRepository {
 
     List<Reading> findAll();
 
+    List<Reading> findByVinId(String VinId);
+
     Reading findOne(String vin);
 
     Reading create(Reading reading);
