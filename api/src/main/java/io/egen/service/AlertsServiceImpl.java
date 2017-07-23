@@ -6,6 +6,9 @@ import io.egen.entity.Tires;
 import io.egen.repository.AlertsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class AlertsServiceImpl implements AlertsService {
@@ -16,23 +19,40 @@ public class AlertsServiceImpl implements AlertsService {
     public void checkinAlerts(Reading reading) {
         Alert alert = null;
 
+        String vin = reading.getVe().getVin();
         if (reading.getEngineRpm()>reading.getVe().getRedlineRpm()){
-            alert= new Alert(reading,"High","Engine RPM Exceeded");
+            alert= new Alert(reading,"High","Engine RPM Exceeded", vin);
         }
         else if(reading.getFuelVolume()<0.1*reading.getVe().getMaxFuelVolume()){
-            alert = new Alert(reading,"Medium", "Low Fuel");
+            alert = new Alert(reading,"Medium", "Low Fuel",vin);
         }
         else if(checkingTirePressure(reading.getTires())){
-            alert=new Alert(reading,"Low", "LowTirePressure");
+            alert=new Alert(reading,"Low", "LowTirePressure",vin);
         }
         else if(reading.isCheckEngineLightOn()||reading.isEngineCoolantLow()){
-            alert=new Alert(reading,"Low","Engine Coolant/Light Alert");
+            alert=new Alert(reading,"Low","Engine Coolant/Light Alert",vin);
         }
 
         if (alert!=null){
             alertsRepository.create(alert);
 
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Alert> findAlerts() {
+        List<Alert> alerts = alertsRepository.findAlerts();
+        for(Alert a: alerts)
+        {
+            a.setVin(a.getRead().getVe().getVin());
+            a.setReadid(a.getRead().getReadid());
+        }
+        return alerts;
+    }
+
+    @Transactional(readOnly = true)
+    public List<Alert> findByVin(String vin) {
+        return alertsRepository.findByVin(vin);
     }
 
     private boolean checkingTirePressure(Tires tires) {

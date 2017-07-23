@@ -1,7 +1,11 @@
 package io.egen.controller;
 
+import io.egen.entity.Alert;
+import io.egen.entity.Geo;
 import io.egen.entity.Vehicle;
 
+import io.egen.service.AlertsService;
+import io.egen.service.GeoService;
 import io.egen.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,6 +20,12 @@ public class VehicleController {
 
 @Autowired
     VehicleService service;
+
+@Autowired
+    AlertsService alertsService;
+
+@Autowired
+    GeoService geoService;
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<Vehicle> findAll() {
@@ -42,6 +52,37 @@ public class VehicleController {
             service.update(veh);
         return " ";
     }
+    @RequestMapping(method = RequestMethod.GET, value = "/alerts",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<Alert> findAlerts() {
+        System.out.println("Displaying a single vehicle by its vin number");
+        return alertsService.findAlerts();
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/alerts/{vin}",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<Alert> findByVin(@PathVariable("vin") String vin) {
+        System.out.println("Displaying a single vehicle by its vin number");
+        return alertsService.findByVin(vin);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/geo",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<Geo> getGeo() {
+        System.out.println("Displaying a single vehicle by its vin number");
+        return geoService.getGeo();
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/geo/{vin}",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<Geo> getGeoByVin(@PathVariable("vin") String vehId) {
+        System.out.println("Displaying a single vehicle by its vin number");
+        return geoService.getGeoByVin(vehId);
+    }
+
+
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{vin}")
     public void delete(@PathVariable("vin") String vehvin) {
