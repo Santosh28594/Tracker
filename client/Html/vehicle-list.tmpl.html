@@ -1,0 +1,88 @@
+<div class="container">
+      <div class="row">
+        <div class="col-sm-8" > 
+
+  <div class="mySlides w3-display-container w3-center">
+    <img src="http://www.hdcarwallpapers.com/walls/ferrari_458_italia_2013-HD.jpg" style="width:100%" style="height:50%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Cars</h3>
+      <p><b>Cars are Crazyyy!</b></p>   
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://s-media-cache-ak0.pinimg.com/originals/50/bd/e6/50bde600eb62cb8a16ce9a6229e28810.jpg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Cars</h3>
+      <p><b>The atmosphere in New York is lorem ipsum.</b></p>    
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="http://autodatz.com/wp-content/uploads/2017/05/Ultra-Hd-Car-Wallpapers-16-with-Ultra-Hd-Car-Wallpapers.jpg" alt="New york" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Cars</h3>
+      <p><b>Thank you, Chicago - A night we won't forget.</b></p>    
+    </div>
+  </div>  
+<div ng-controller = "trackerController as trackVm">
+    
+          
+
+<br>
+<br>
+<input type="text" placeholder="Search Vehicles" class="form-control" ng-model="trackVm.searchText">
+    
+   <br>
+    <br>
+<h1>Vehicle List</h1>
+            <br>
+            
+            
+    
+            <p>Click On<strong> Make </strong>of any Vehicle to get the details of it.</p>
+            
+    
+<table class="table">
+  <thead>
+    <tr>
+      <th>Make</th>
+       <th>Model</th>
+
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="veh in trackVm.vehicles | filter: trackVm.searchText">
+      <td><a ng-href="#!/vehicles/{{veh.vin}}">{{veh.make}}</a></td>
+       <td>{{veh.model}}</td>
+       <td></td> 
+      
+    </tr>
+  </tbody>
+</table>
+<ul>            
+<li>Click on <a href="#!/alerts-count"><strong>Count</strong></a> to get the Count of high alerts for each vehicle.</li>
+    <li>Click on <a href="#!/alerts-history"><strong>Alerts History</strong></a> to get history of Vehicles Alerts.</li>
+    <li>Click on <a href="#!/location"><strong>Location</strong></a> to getlocations of the vehicles. </li>
+    <li>Click on <a href="#!/plots"><strong>Plots</strong></a>  to get the plots b/w selected parameter and time. </li>            
+         
+    </ul>
+          </div>
+    </div>
+    </div>
+</div>
+<script>
+        var myIndex = 0;
+carousel();
+   function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 4000);    
+}
+
+    </script>
