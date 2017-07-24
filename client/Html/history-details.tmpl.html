@@ -1,0 +1,26 @@
+
+<div ng-controller = "historyDetailsController as hDetailVm">
+<div class="container">
+      <div class="row">
+        <div class="col-sm-8" >    
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Priority</th>
+       <th>Time of Alert</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+      
+    <tr ng-repeat="veh in hDetailVm.historyDetails">
+      <td>{{veh.priority}}</td>
+       <td>{{veh.datetime| date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+      
+    </tr>
+  </tbody>
+</table>
+          </div>
+    </div>
+    </div>
+</div>
