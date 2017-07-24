@@ -8,7 +8,6 @@
     trackerController.$inject=['trackerService'];
 
     function trackerController(trackerService){
-        console.log("Came here to controller");
           
    
     
@@ -16,7 +15,6 @@
         trackerService.get().then(function(vehicles){
             trackVm.vehicles=vehicles;
             
-            console.log(vehicles);
         }, function(error){
             console.log(error);
         });
