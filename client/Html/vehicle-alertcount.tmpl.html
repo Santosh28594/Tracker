@@ -1,0 +1,23 @@
+<div class="container">
+      <div class="row">
+        <div class="col-sm-8" >
+<h1>Number of High Alerts in Last 2 hours</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Vehicle Vin</th>
+       <th>Number of High Alerts</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="veh in aCountVm.alertCount| orderBy:'-count'">
+      <td>{{veh.vin}}</td>
+       <td>{{veh.count}}</td>
+      
+    </tr>
+  </tbody>
+</table>
+          </div>
+    </div>
+</div>

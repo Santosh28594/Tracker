@@ -1,0 +1,16 @@
+<div ng-controller = "vAlertController as vAlertVm">
+<div class="container">
+      <div class="row">
+        <div class="col-sm-6" >    
+    <div ng-repeat="veh in vAlertVm.alerts" class = "alert">
+        <a ng-href="#!/alerts-history/{{veh.vin}}" >{{veh.model}}</a></div>
+</div>
+          
+          <div class = "col-sm-6">
+          <div class= "a">
+          <p> Click on any Model of vehicle to get its history of ALerts</p>
+          </div>
+          </div>
+    </div>
+    </div>
+</div>

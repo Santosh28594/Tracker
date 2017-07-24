@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app="tracker">
+<head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>car_tracker</title>
+     <script>document.write('<base href="' + document.location + '" />');</script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Styles/style.css" />
+</head>
+<body>
+ <ul class="nav nav-pills" >
+   
+    <li><a href="#/vehicles"><strong>VehicleList</strong></a></li>
+    <li><a href="#!/alerts-count"><strong>Count</strong></a></li>
+    <li><a href="#!/alerts-history"><strong>Alerts History</strong></a> </li>
+    <li><a href="#!/location"><strong>Location</strong></a></li>
+    <li><a href="#!/plots"><strong>Plots</strong></a> </li>  
+    
+  </ul>    
+
+    
+      <div class="mySlides w3-display-container w3-center">
+    <img src="http://www.hdcarwallpapers.com/walls/ferrari_458_italia_2013-HD.jpg" style="width:100%" style="height:50%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+     
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://s-media-cache-ak0.pinimg.com/originals/50/bd/e6/50bde600eb62cb8a16ce9a6229e28810.jpg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="http://autodatz.com/wp-content/uploads/2017/05/Ultra-Hd-Car-Wallpapers-16-with-Ultra-Hd-Car-Wallpapers.jpg" alt="New york" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        
+    </div>
+  </div>
+  
+  <div class="container">
+      <div class="row">
+        <div class="col-sm-8" >
+
+  
+   
+
+  <div ng-view>
+
+  </div>
+            
+          </div>
+      </div>
+    </div>
+   
+  
+
+
+
+
+
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>-->
+<script src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
+ <script src="https://code.angularjs.org/1.6.4/angular-route.min.js"></script>
+ <script src = "https://cdn.zingchart.com/zingchart.min.js" ></script>  
+<script src = "https://cdn.zingchart.com/angular/zingchart-angularjs.js" ></script> 
+  <script src="Module/tracker.module.js"></script>
+  <script src="Controller/vehicle-list.controller.js"></script>
+  <script src="Controller/vehicle-alerthistory.controller.js"></script>
+  <script src="Service/tracker.service.js"></script>
+<script src="Controller/vehicle-details.controller.js"></script>
+    <script src="Controller/history-details.controller.js"></script>
+    <script src="Controller/vehicle-location.controller.js"></script>
+     <script src="Controller/vehicle-location-track.controller.js"></script>
+    <script src="Controller/readings-vin.controller.js"></script>
+    <script src="Controller/readings-Plot-Graph.controller.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    
+    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
+<script src="Controller/vehicle-alertcount.controller.js"></script>
+
+ <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=drawing"></script>
+    <script>
+        var myIndex = 0;
+carousel();
+   function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 4000);    
+}
+
+    </script>
+</body>
+</html>

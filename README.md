@@ -8,6 +8,3 @@ seed for the Full-Stack IOT training project: car-tracker
 
 ## mock sensor: 
 [http://mocker.egen.io](http://mocker.egen.io)
-
-## requirements:
-[https://learn.egen.io](https://learn.egen.io/courses/overview.html)

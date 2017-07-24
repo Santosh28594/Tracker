@@ -1,0 +1,18 @@
+<div ng-controller="locationController as locationVm">
+    
+<div class="container">
+      <div class="row">
+        <div class="col-sm-5" >    
+  <br>
+            <br>
+            
+ <p> Click on any Model of vehicle to plot locations of it on map</p>            
+<div ng-repeat="location in locationVm.geo" class = "alert">
+  <a ng-href="#!/location/{{location.vin}}">{{location.make}}</a>
+</div>
+</div>
+          
+    </div>
+   
+</div>
+</div>
