@@ -1,0 +1,36 @@
+
+
+
+
+
+
+
+<div ng-controller ="readingsPlotGraphController as plotGraphVm" >
+<div class="container">
+      <div class="row">
+        <div class="col-sm-8" >
+
+<label id = "selectedName">Parameter  </label>         
+<select ng-model="selectedName" id = "selectedName" name = "selectedName" ng-options="item for item in type"  class="form-control" style="width:40%;">
+    </select>
+
+<!--<select ng-model="selectedTime" id = "selectedTime" name = "selectedTime" ng-options="item for item in time" ng-change="setSelected()">-->
+<!--</select>-->
+<label id = "selectedTime">Time(In Minutes)  </label>
+<input type="text" class="form-control" ng-model="selectedTime" ng-change="setSelected()" style="width:40%;" id = "selectedTime"/>
+
+<zingchart id = "myChart" zc-height = 500 zc-width = 600  zc-json = "myJson">
+  
+ 
+  
+  
+  
+</zingchart>
+
+ <!--<div ng-repeat = "plot in plotVm.plots">-->
+ <!--   <h2>{{plot.timestamp|date:'medium'}}</h2>-->
+ <!-- </div>-->
+</div>
+    </div>
+    </div>
+</div>
